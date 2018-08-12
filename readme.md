@@ -57,12 +57,12 @@ export default class App extends React.Component {
 
 ## 快乐的客户: 
 
--   ["我现在对此很着迷: CRA使用React Router v4并且可以反应加载. 免费代码分割,这很容易. "](https://twitter.com/matzatorski/status/872059865350406144)
--   ["Webpack 2升级和反应可装载;在2小时内初始负载从1.1mb到529kb. 很大. "](https://twitter.com/jwbradley87/status/847191118269833216)
--   ["哦,嘿 - 使用可加载的组件,我在初始负载下撞了13K. 轻松获胜!"](https://twitter.com/AdamRackis/status/846593080992153600)
--   ["看了一眼就看起来很棒了. 在我们的主捆上刮了50kb. "](https://github.com/quran/quran.com-frontend/pull/701#issuecomment-287908551)
--   ["我已经完成了服务器端渲染+代码分割+ PWA ServiceWorker缓存设置😎 (感谢react-loadable) . 现在我们的前端非常快. "](https://twitter.com/mxstbr/status/922375575217627136)
--   ["使用react-loadable来自221.28 KB→115.76 KB @ main bundle. 他妈的非常棒且非常简单. "](https://twitter.com/evgenyrodionov/status/958821614644269057)
+-   ["我现在对此很着迷: CRA使用React Router v4 和 react-loadable. 免费代码分割,太方便了."](https://twitter.com/matzatorski/status/872059865350406144)
+-   ["Webpack 2升级 和 react-loadable; 在2小时内 初始负载从 1.1mb到529kb. 提升很大. "](https://twitter.com/jwbradley87/status/847191118269833216)
+-   ["哦,嘿 - 使用react-loadable,我在初始负载下降了13K. 轻松获胜!"](https://twitter.com/AdamRackis/status/846593080992153600)
+-   ["看了一眼就看起来很棒了. 在我们的主捆绑包上刮去了50kb. "](https://github.com/quran/quran.com-frontend/pull/701#issuecomment-287908551)
+-   ["我已经完成了 服务器端渲染+代码分割+ PWA ServiceWorker缓存设置 😎 (感谢react-loadable) . 现在我们的前端非常快. "](https://twitter.com/mxstbr/status/922375575217627136)
+-   ["使用react-loadable, 从 221.28 KB→115.76 KB @ main bundle. TMD非常棒且非常简单. "](https://twitter.com/evgenyrodionov/status/958821614644269057)
 
 ## 用户
 
@@ -1075,7 +1075,7 @@ export default class App extends React.Component {
 }
 ```
 
-不幸的是,目前使用包裹的可装载休息时间[反应可装载/巴别](#babel-plugin)所以在这种情况下你必须添加所需的属性 (`modules`,`webpack`) 手动. 
+不幸的是,目前使用包裹的可装载休息时间[react-loadable/巴别](#babel-plugin)所以在这种情况下你必须添加所需的属性 (`modules`,`webpack`) 手动. 
 
 ```js
 import MyLoadable from './MyLoadable';
