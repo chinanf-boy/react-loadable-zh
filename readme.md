@@ -37,7 +37,7 @@
 yarn add react-loadable
 ```
 
-## 例
+## 例子
 
 ```js
 import Loadable from 'react-loadable';
@@ -57,31 +57,31 @@ export default class App extends React.Component {
 
 ## 快乐的客户: 
 
--   ["我现在对此很着迷: CRA使用React Router v4并且可以反应加载. 免费代码拆分,这很容易. "](https://twitter.com/matzatorski/status/872059865350406144)
+-   ["我现在对此很着迷: CRA使用React Router v4并且可以反应加载. 免费代码分割,这很容易. "](https://twitter.com/matzatorski/status/872059865350406144)
 -   ["Webpack 2升级和反应可装载;在2小时内初始负载从1.1mb到529kb. 很大. "](https://twitter.com/jwbradley87/status/847191118269833216)
 -   ["哦,嘿 - 使用可加载的组件,我在初始负载下撞了13K. 轻松获胜!"](https://twitter.com/AdamRackis/status/846593080992153600)
 -   ["看了一眼就看起来很棒了. 在我们的主捆上刮了50kb. "](https://github.com/quran/quran.com-frontend/pull/701#issuecomment-287908551)
--   ["我已经完成了服务器端渲染+代码拆分+ PWA ServiceWorker缓存设置😎 (感谢react-loadable) . 现在我们的前端非常快. "](https://twitter.com/mxstbr/status/922375575217627136)
+-   ["我已经完成了服务器端渲染+代码分割+ PWA ServiceWorker缓存设置😎 (感谢react-loadable) . 现在我们的前端非常快. "](https://twitter.com/mxstbr/status/922375575217627136)
 -   ["使用react-loadable来自221.28 KB→115.76 KB @ main bundle. 他妈的非常棒且非常简单. "](https://twitter.com/evgenyrodionov/status/958821614644269057)
 
 ## 用户
 
--   [Analog.Cafe](https://www.analog.cafe)
--   [Appbase.io](https://github.com/appbaseio/reactivesearch)
--   [Atlassian的](https://www.atlassian.com/)
--   [CloudFlare的](https://www.cloudflare.com)
--   [古玩](https://www.curio.org)
--   [Dresez](https://dresez.pk/)
--   [Flyhomes](https://flyhomes.com)
--   [勾勾](https://gogoair.com)
--   [联发科技MCS-Lite](https://github.com/MCS-Lite)
--   [给予](https://render.com)
--   [Snipit](https://snipit.io)
--   [Spectrum.chat](https://spectrum.chat)
--   [Talentpair](https://talentpair.com)
--   [火种](https://tinder.com/)
--   [Unsplash](https://unsplash.com/)
--   [波](https://waveapps.com/)
+- [Analog.Cafe](https://www.analog.cafe)
+- [Appbase.io](https://github.com/appbaseio/reactivesearch)
+- [Atlassian](https://www.atlassian.com/)
+- [Cloudflare](https://www.cloudflare.com)
+- [Curio](https://www.curio.org)
+- [Dresez](https://dresez.pk/)
+- [Flyhomes](https://flyhomes.com)
+- [Gogo](https://gogoair.com)
+- [MediaTek MCS-Lite](https://github.com/MCS-Lite)
+- [Render](https://render.com)
+- [Snipit](https://snipit.io)
+- [Spectrum.chat](https://spectrum.chat)
+- [Talentpair](https://talentpair.com)
+- [Tinder](https://tinder.com/)
+- [Unsplash](https://unsplash.com/)
+- [Wave](https://waveapps.com/)
 
 > *如果您的公司或项目正在使用React Loadable,请打开PR并将自己添加到此列表中 (请按字母顺序排列) *
 
@@ -100,41 +100,45 @@ export default class App extends React.Component {
 
 所以你有你的React应用程序,你将它与Webpack捆绑在一起,事情进展顺利. 但是有一天你会注意到你的应用程序的捆绑包变得越来越大,以至于减慢了速度. 
 
-是时候开始代码拆分您的应用了!
+是时候开始拆分您应用的代码了!
 
 ![A single giant bundle vs multiple smaller bundles](http://thejameskyle.com/img/react-loadable-split-bundles.png)
 
-代码拆分是一个包含整个应用程序的大型捆绑包,并将它们拆分为多个较小的捆绑包,其中包含应用程序的不同部分. 
+代码分割是一个 包含整个应用程序的大型捆绑包,并将它们拆分为多个较小的捆绑包,其中包含应用程序的不同部分. 
 
 这似乎很难做到,但像Webpack这样的工具内置了这个工具,而React Loadable旨在使其变得非常简单. 
 
-### 基于路由的拆分与基于组件的拆分您将看到的一条常见建议是将应用程序分成不同的路径,并异步加载每个路径. 
+### 基于路由的分割 vs 基于组件的分割
 
-对于许多应用程序而言,这似乎运行良好 - 作为用户,单击链接并等待页面加载是Web上熟悉的体验. 但我们可以做得更好. 
+你会遇到的一个常规建议是把你的应用分成多个路由，然后一个个异步加载。这种方式似乎对大多数应用有作用，点击一个链接然后加载一页新的页面并不是一个太差的体验。
 
-使用React的大多数路由工具,路由只是一个组件. 
+但是我们可以做得比这个更好。
 
-对他们来说没什么特别的 (对不起莱恩和迈克尔 - 你有什么特别之处) . 那么如果我们针对组件而不是路由进行优化来进行优化呢?那会让我们得到什么?事实证明: 相当多. 
+React 的大多数路由工具都是一个简单的组件。没有什么特别的. (对不起莱恩和迈克尔 - 你有什么特别之处) . 那么如果我们针对组件而不是路由进行优化来进行优化呢?那会让我们得到什么?
+（指在组件层动态优化而不是传统的动态加载路由）
 
 ![Route vs. component centric code splitting](http://thejameskyle.com/img/react-loadable-component-splitting.png)
 
-除了路线之外,还有很多地方可以轻松拆分您的应用. 模式,选项卡和更多UI组件隐藏内容,直到用户完成某些操作才能显示它. 例: 
+（上图可以看到，路由分割的粒度还是比较大，一个路由就是一条系列组件，而组件的分割更细，在路由里还可以细分
 
-> **也许你的应用程序有一个埋在选项卡组件内的地图. **每当用户可能永远不会访问该选项卡时,为什么要为父路由加载大量映射库?更不用说所有可以推迟加载内容的地方,直到更高优先级的内容加载完毕. 
+事实证明: 相当多. 
+除了路由之外,还有很多地方可以轻松拆分您的应用. 模式,选项卡和更多UI组件隐藏内容,直到用户完成某些操作才能显示它.
 
-页面底部的那个组件加载了一堆库: 为什么要与顶部的内容同时加载?而且由于路由只是组件,我们仍然可以在路由级别轻松进行代码分割. 
+> **例:** 也许你的应用程序有一个埋在 选项卡组件 内的地图. 每当用户可能又或者永远不会访问该选项卡时,为什么要为父路由加载大量地图库? 
 
-在您的应用中引入新的代码分割点应该非常简单,您不必再三考虑它. 
+更别提其他所有在更高优先级内容加载完成后才会延迟加载的部分。例如在你的页面最底部有的组件需要加载一堆包（虽然组件本身可能不大，但是这些底部组件可能引入一些很大的第三方包）：为什么这些需要和顶部的组件一起加载呢？
 
-这应该是改变几行代码的问题,其他一切都应该是自动化的. 介绍React Loadable
+你也可以继续轻松地分割路由，因为路由也仅仅是组件而已。怎么对你的应用最好怎么做。
 
-### React Loadable是一个小型库,它使得以组件为中心的代码在React中非常容易分割. 
+但是我们需要使在组件层面分割和路由层面分割一样容易。分割一块新位置应该简单到改变应用的几行代码一样容易，其他剩余的工作应该是自动化的。
 
-是一个高阶组件 (一个创建组件的函数) ,它允许您在将任何模块呈现到应用程序之前动态加载它. 
+### 介绍React Loadable
 
-`Loadable`让我们设想两个组件,一个导入并渲染另一个组件. 
+React Loadable是一个小型库,它使得 以组件为中心 的代码在React中非常容易分割. 
 
-现在我们依赖
+`Loadable`是一个高阶组件 (一个创建组件的函数) ,它允许您在将 任何模块渲染到应用程序之前 动态加载它. 
+
+让我们设想两个组件,导入一个组件和渲染另一个组件. 
 
 ```js
 import Bar from './components/Bar';
@@ -146,9 +150,9 @@ class Foo extends React.Component {
 }
 ```
 
-通过同步导入`Bar`,但是在我们去渲染它之前我们不需要它. `import`那么我们为什么不推迟呢?
+现在我们依赖于`Bar`意味着通过`import`导入同步,但是在我们去渲染它之前我们不需要它. 那么我们为什么不推迟呢?
 
-用一个**动态导入** ([目前处于第3阶段的tc39提案](https://github.com/tc39/proposal-dynamic-import)) 我们可以修改我们的组件加载`Bar`异步. 
+用一个**动态导入** ([目前处于第3阶段的tc39提案](https://github.com/tc39/proposal-dynamic-import)) 我们可以修改我们的组件来异步加载`Bar`. 
 
 ```js
 class MyComponent extends React.Component {
@@ -173,9 +177,9 @@ class MyComponent extends React.Component {
 }
 ```
 
-但这是一大堆工作,它甚至没有处理一堆案例. 什么时候`import()`失败?那么服务器端渲染呢?
+然而，这种方式有很多手动工作，而且它并不能处理很多不同的场景。例如如果 import() 失败怎么办？服务器端渲染怎么处理？
 
-相反,你可以使用`Loadable`去除问题. 
+你可以使用 Loadable 来抽象地解决这个问题. 使用 Loadable 很简单。所有你需要做的就是**传入一个加载组件的函数**，和一个当你的组件在加载时提示用户来**占位显示 “Loading” 状态的组件**。
 
 ```js
 import Loadable from 'react-loadable';
@@ -194,15 +198,15 @@ class MyComponent extends React.Component {
 }
 ```
 
-### 自动代码分割`import()`
+### `import()`的自动代码分割
 
-当你使用`import()`使用Webpack 2+,它会[自动进行代码分割](https://webpack.js.org/guides/code-splitting/)为您而无需额外配置. 
+关于 `import()` 最好的事情就是 Webpack 2 能够在你引入了一个新的模块之后为你[自动进行代码分割](https://webpack.js.org/guides/code-splitting/)，而不需要任何额外的工作。
 
-这意味着只需切换到即可轻松尝试新的代码分割点`import()`并使用React Loadable. 找出最适合您的应用的内容. 
+这意味只需要通过切换到 `import()` 并使用 React Loadable，你可以很容易实验新的代码分割点，来弄清楚在你的应用上怎么处理表现最好。
 
-### 创建一个伟大的"加载..."组件
+### 创建一个伟大的"Loading..."组件
 
-渲染静态"正在加载..."与用户的通信不够. 您还需要考虑错误状态,超时并使其成为一种不错的体验. 
+渲染静态"正在加载..."并不能说明什么. 您还需要考虑错误状态,超时 并使其成为一种不错的体验. 
 
 ```js
 function Loading() {
@@ -215,11 +219,11 @@ Loadable({
 });
 ```
 
-为了让这一切变得美好,你的[加载组件](#loadingcomponent)收到几个不同的道具. 
+为了让这一切变得美好,你的[加载组件](#loadingcomponent)会收到几个不同的`props`. 
 
 #### 加载错误状态
 
-当你的[`loader`](optsloader)失败,你的[加载组件](#loadingcomponent)会收到一个[`error`](propserror)道具将是一个`Error`对象 (否则它将是`null`) . 
+当你的[`loader`](optsloader)失败,你的[加载组件](#loadingcomponent)会收到一个[`error`](propserror)来自`props`,将是一个`Error`对象 (否则它将是`null`) . 
 
 ```js
 function Loading(props) {
@@ -231,13 +235,14 @@ function Loading(props) {
 }
 ```
 
-#### 避免*闪存的加载组件*
+#### 避免加载组件时的闪烁
 
-有时组件加载速度非常快 (\<200ms) ,加载屏幕只会在屏幕上快速闪烁. 
+有时组件加载非常快，小于 200ms，提示加载的组件会在界面上一闪而过.
 
-许多用户研究已经证明,这会导致用户感知事情的时间比实际时间长. 如果您没有显示任何内容,用户会认为它更快. 
+一些用户调研表明这会导致用户感知事情发生（组件加载）的时间比真实的更长。如果你什么都不显示，那么用户对加载的感知反而觉得更快.
 
-所以你的加载组件也会得到一个[`pastDelay`支柱](#propspastdelay)只有当组件加载时间超过一组时才会成立[延迟](#optsdelay). 
+所以你的 loading 组件（就是在真正要用的组件加载完成之前显示的提示组件）有一个[`pastDelay`props](#propspastdelay)，只有在真正用到的组件花了比设定的 delay更长的时间加载的时候，[delay延迟](#optsdelay)才会是 true （才会显示提示的 loading 组件）.
+
 
 ```js
 function Loading(props) {
@@ -251,7 +256,7 @@ function Loading(props) {
 }
 ```
 
-此延迟默认为`200ms`但你也可以自定义[延迟](#optsdelay)在`Loadable`. 
+delay 的默认值是 `200ms`，但你也可以使用第三个参数来设置[延迟](#optsdelay)时长. 
 
 ```js
 Loadable({
@@ -261,11 +266,11 @@ Loadable({
 });
 ```
 
-#### 定时出来的时候`loader`花了太长时间
+#### 超时`loader`花了太长时间
 
-有时网络连接很糟糕,永远不会解决或失败,它们只是永远挂在那里. 这对用户来说很糟糕,因为他们不知道是否应该总是花这么长时间,或者他们应该尝试刷新. 
+有时网络连接很糟糕,永远不会解决或失败,它们只是永远挂在那里. 这对用户来说很糟糕,因为他们不知道是不总是花这么长时间,或者他们应该尝试刷新. 
 
-该[加载组件](#loadingcomponent)会收到一个[`timedOut`支柱](#propstimedout)将被设置为`true`当. . . 的时候[`loader`](#optsloader)已经超时了. 
+该[加载组件](#loadingcomponent)会收到一个[`timedOut`prop](#propstimedout)将被设置为`true`, 当[`loader`](#optsloader)已经超时了的时候. 
 
 ```js
 function Loading(props) {
@@ -281,7 +286,7 @@ function Loading(props) {
 }
 ```
 
-但是,默认情况下禁用此功能. 要打开它,你可以传递一个[`timeout`选项](#optstimeout)至`Loadable`. 
+但是,默认情况下禁用此功能. 要打开它,你可以传递一个[`timeout`选项](#optstimeout)给`Loadable`. 
 
 ```js
 Loadable({
@@ -293,7 +298,7 @@ Loadable({
 
 ### 自定义渲染
 
-默认`Loadable`将呈现`default`导出返回的模块. 如果要自定义此行为,可以使用[`render`选项](#optsrender). 
+默认`Loadable`将渲染`default`导出模块. 如果要自定义此行为,可以使用[`render`选项](#optsrender). 
 
 ```js
 Loadable({
@@ -307,7 +312,7 @@ Loadable({
 
 ### 加载多个资源
 
-从技术上讲,你可以做任何你想做的事`loader()`只要它返回一个承诺和[你能够渲染一些东西](#customizing-rendering). 但写出来可能有点烦人. 
+从技术上讲,你可以使用`loader()`做任何你想做的事,只要它返回一个承诺和[你能够渲染一些东西](#customizing-rendering). 但写出来可能有点烦人. 
 
 为了便于并行加载多个资源,您可以使用[`Loadable.Map`](#loadablemap). 
 
@@ -325,15 +330,16 @@ Loadable.Map({
 });
 ```
 
-使用时`Loadable.Map`该[`render()`方法](#optsrender)是必须的. 它将通过一个`loaded`param是一个与你的形状相匹配的物体`loader`. 
+使用`Loadable.Map`时,[`render()`方法](#optsrender)是必须的. 它将通过一个`loaded`参数传入`loader`形状的对象. 
 
 ### 预加载
 
-作为优化,您还可以决定在呈现之前预加载组件. 
+作为一种优化手段，你也可以在一个组件被渲染之前预加载它。
 
-例如,如果您需要在按下按钮时加载新组件,则可以在用户将鼠标悬停在按钮上时开始预加载组件. 
+例如，如果你需要一个按钮被点击时加载一个新的组件，你可以在这个用户把鼠标 hover 到这个按钮之上时就开始预加载这个组件。
 
-创建的组件`Loadable`露出一个[静态的`preload`方法](#loadablecomponentpreload)这正是这个. 
+被 Loadable 构建的组件会开放一个[ preload 静态方法](#loadablecomponentpreload)刚好做到这点（指预加载）。
+
 
 ```js
 const LoadableBar = Loadable({
@@ -373,14 +379,14 @@ class MyComponent extends React.Component {
   <img src="http://thejameskyle.com/img/react-loadable-ssr.png" alt="SERVER SIDE RENDERING">
   <hr>
   <hr>
-  <small>Server-Side Rendering</small>
+  <small>服务端渲染</small>
 </h2>
 
-当你去渲染所有这些动态加载的组件时,你会得到的是一大堆加载屏幕. 
+当你去渲染所有这些动态加载的组件时,你会得到的是屏幕上一大堆加载. 
 
-这真的很糟糕,但好消息是React Loadable旨在使服务器端渲染工作,好像没有动态加载任何内容. 
+这真的很糟糕,但好消息是 React Loadable 旨在使服务器端渲染好好工作,就好像没有动态加载任何内容. 
 
-这是我们的启动服务器使用[表现](https://expressjs.com/). 
+这是使用[Express](https://expressjs.com/)的启动服务器. 
 
 ```js
 import express from 'express';
@@ -408,11 +414,11 @@ app.listen(3000, () => {
 });
 ```
 
-### 在服务器上预加载所有可加载组件
+### 在服务器上预加载所有loadable组件
 
-从服务器呈现正确内容的第一步是确保在您渲染它们时已经加载了所有可加载组件. 
+第一步是:从服务器渲染正确内容,确保在您渲染它们时已经加载了所有可加载组件. 
 
-为此,您可以使用[`Loadable.preloadAll`](#loadablepreloadall)方法. 它返回一个承诺,该承诺将在所有可加载组件准备就绪时解决. 
+为此,您可以使用[`Loadable.preloadAll`](#loadablepreloadall)方法. 它返回一个承诺,该承诺将在所有可加载组件准备就绪后`resolve`. 
 
 ```js
 Loadable.preloadAll().then(() => {
@@ -422,17 +428,17 @@ Loadable.preloadAll().then(() => {
 });
 ```
 
-### 在客户端上拾取服务器端呈现的应用程序
+### 在客户端上准备服务器端渲染的应用程序
 
-这是事情变得有点棘手的地方. 所以让我们为自己做好准备吧. 
+这是事情变得有点棘手的地方. 所以让我们做好准备吧. 
 
-为了让我们获取从服务器呈现的内容,我们需要拥有用于在服务器上呈现的所有相同代码. 
+为了让我们获取从服务器渲染的内容,我们需要拥有于服务器上相同的渲染代码. 
 
 为此,我们首先需要可加载的组件来告诉我们它们正在渲染哪些模块. 
 
 #### 声明正在加载哪些模块
 
-有两种选择[`Loadable`](#loadable)和[`Loadable.Map`](#loadablemap)用于告诉我们组件尝试加载哪些模块: [`opts.modules`](#optsmodules)和[`opts.webpack`](#optswebpack). 
+有两种选择:[`Loadable`](#loadable)和[`Loadable.Map`](#loadablemap)用于告诉我们组件尝试加载哪些模块: [`opts.modules`](#optsmodules)和[`opts.webpack`](#optswebpack). 
 
 ```js
 Loadable({
@@ -442,7 +448,7 @@ Loadable({
 });
 ```
 
-但是不要过分担心这些选择. React Loadable包括一个[Babel插件](#babel-plugin)为你添加它们. 
+但是不要过分担心这些选项. React Loadable含有一个[Babel插件](#babel-plugin), 会为你添加它们. 
 
 只需添加`react-loadable/babel`插件到您的Babel配置: 
 
@@ -458,9 +464,9 @@ Loadable({
 
 #### 找出渲染的动态模块
 
-接下来,我们需要找出请求进入时实际呈现的模块. 
+接下来,我们需要找出请求时,实际渲染的模块. 
 
-为此,有[`Loadable.Capture`](#loadablecapture)可用于收集所有已呈现模块的组件. 
+为此,有[`Loadable.Capture`](#loadablecapture)可用于收集所有已渲染模块的组件. 
 
 ```js
 import Loadable from 'react-loadable';
@@ -480,15 +486,15 @@ app.get('/', (req, res) => {
 });
 ```
 
-#### 将加载的模块映射到bundle
+#### 将加载的模块映射到捆绑器
 
-为了确保客户端加载所有在服务器端呈现的模块,我们需要将它们映射到Webpack创建的包. 
+为了确保客户端加载,所有在服务器端渲染的模块,我们需要将它们映射到Webpack创建的包. 
 
 这分为两部分. 
 
 首先,我们需要Webpack告诉我们每个模块所包含的捆绑包. 为此,有[React可加载Webpack插件](#webpack-plugin). 
 
-导入`ReactLoadablePlugin`从`react-loadable/webpack`并将其包含在您的webpack配置中. 通过它`filename`用于存储有关我们的包的JSON数据的位置. 
+从`react-loadable/webpack`导入`ReactLoadablePlugin`,并将其包含在您的webpack配置中. 它通过`filename`存储有关包位置的JSON数据. 
 
 ```js
 // webpack.config.js
@@ -503,9 +509,9 @@ export default {
 };
 ```
 
-然后我们将回到我们的服务器并使用这些数据将我们的模块转换为bundle. 
+然后我们将回到我们的服务器,并使用这些数据将我们的模块并入捆绑. 
 
-要从模块转换为包,请导入[`getBundles`](#getbundles)方法来自`react-loadable/webpack`和来自Webpack的数据. 
+要将模块并入捆绑,请导入[`getBundles`](#getbundles)方法,它来自`react-loadable/webpack`和Webpack的数据. 
 
 ```js
 import Loadable from 'react-loadable';
@@ -527,13 +533,13 @@ app.get('/', (req, res) => {
 });
 ```
 
-然后我们可以将这些包渲染成`<script>`我们的HTML中的标签. 
+然后我们可以将这些包渲染成`<script>`标签. 
 
-包括捆绑包很重要*之前*主要包,以便在应用程序呈现之前可以通过浏览器加载它们. 
+很重要的是: 捆绑包包括*之前*的主要捆绑文件,以便在应用程序渲染之前通过浏览器加载它们. 
 
-但是,由于Webpack清单 (包括解析bundle的逻辑) 存在于主bundle中,因此需要将其提取到自己的块中. 
+但是,由于Webpack清单 (具有解析bundle的逻辑) 存在于主bundle中,因此需要将其提取到自己的块中. 
 
-这很容易做到[CommonsChunkPlugin](https://webpack.js.org/plugins/commons-chunk-plugin/)
+这很容易做到,就是通过使用[CommonsChunkPlugin](https://webpack.js.org/plugins/commons-chunk-plugin/)
 
 ```js
 // webpack.config.js
@@ -547,7 +553,7 @@ export default {
 }
 ```
 
-*注意: 从Webpack 4开始,CommonsChunkPlugin已被删除,并且不再需要提取清单. *
+*注意: 从Webpack 4开始,`CommonsChunkPlugin`已被删除,并且不再需要提取清单. *
 
 ```js
 let bundles = getBundles(stats, modules);
@@ -561,9 +567,9 @@ res.send(`
       <script src="/dist/manifest.js"></script>
       ${bundles.map(bundle => {
         return `<script src="/dist/${bundle.file}"></script>`
-        // alternatively if you are using publicPath option in webpack config
-        // you can use the publicPath value from bundle, e.g:
-        // return `<script src="${bundle.publicPath}"></script>`
+        // 或者 如果你使用了 publicPath 在 webpack 配置中
+        // 你可以使用 捆绑中的 publicPath 值, 例如:
+        // 返回 `<script src="${bundle.publicPath}"></script>`
       }).join('\n')}
       <script src="/dist/main.js"></script>
     </body>
@@ -573,9 +579,9 @@ res.send(`
 
 #### 在客户端上预加载准备好的可加载组件
 
-我们可以使用[`Loadable.preloadReady()`](#loadablepreloadready)客户端上的方法,用于预加载页面上包含的可加载组件. 
+我们可以使用[`Loadable.preloadReady()`](#loadablepreloadready)- 客户端上的方法,用于预加载页面上包含的可加载组件. 
 
-喜欢[`Loadable.preloadAll()`](#loadablepreloadall),它会返回一个承诺,在解决方案上意味着我们可以保护我们的应用程序. 
+类似[`Loadable.preloadAll()`](#loadablepreloadall),它会返回一个承诺,在`then`上我们可以`hydrate`我们的应用程序. 
 
 ```js
 // src/entry.js
@@ -590,7 +596,7 @@ Loadable.preloadReady().then(() => {
 ```
 
 <h4 align="center">
-  Now server-side rendering should work perfectly!
+  现在 服务端渲染完美工作!
 </h4>
 
 <h2>
@@ -599,12 +605,12 @@ Loadable.preloadReady().then(() => {
   <img src="http://thejameskyle.com/img/react-loadable-api-docs.png" alt="API DOCS">
   <hr>
   <hr>
-  <small>API Docs</small>
+  <small>API 文档</small>
 </h2>
 
 ### `Loadable`
 
-动态的高阶组件[装载](#optsloader)以前的模块[翻译](#optsrender)它,a[装载](#opts.loading)模块不可用时呈现组件. 
+动态的高阶组件[装载](#optsloader)以前的模块[翻译](#optsrender)它,a[装载](#opts.loading)模块不可用时渲染组件. 
 
 ```js
 const LoadableComponent = Loadable({
@@ -666,7 +672,7 @@ Loadable.Map({
 
 #### `opts.loading`
 
-一个[`LoadingComponent`](#loadingcomponent)在模块加载或错误时呈现. 
+一个[`LoadingComponent`](#loadingcomponent)在模块加载或错误时渲染. 
 
 ```js
 Loadable({
@@ -708,9 +714,9 @@ Loadable({
 
 #### `opts.render`
 
-用于自定义已加载模块的呈现的函数. 
+用于自定义已加载模块的渲染的函数. 
 
-收到`loaded`这是解决的价值[`opts.loader`](#optsloader)和`props`哪些道具传递给了[`LoadableComponent`](#loadablecomponent). 
+收到`loaded`这是解决的价值[`opts.loader`](#optsloader)和`props`哪些props,传递给了[`LoadableComponent`](#loadablecomponent). 
 
 ```js
 Loadable({
@@ -757,7 +763,7 @@ const LoadableComponent = Loadable({
 });
 ```
 
-传递给此组件的道具将直接传递到动态加载的组件[`opts.render`](#optsrender). 
+传递给此组件的props,将直接传递到动态加载的组件[`opts.render`](#optsrender). 
 
 #### `LoadableComponent.preload()`
 
@@ -819,7 +825,7 @@ function LoadingComponent(props) {
 
 #### `props.retry`
 
-函数道具传递给[`LoadingComponent`](#loadingcomponent)当. . . 的时候[`loader`](#optsloader)失败,用于重试加载组件. 
+函数props,传递给[`LoadingComponent`](#loadingcomponent)当. . . 的时候[`loader`](#optsloader)失败,用于重试加载组件. 
 
 ```js
 function LoadingComponent(props) {
@@ -835,7 +841,7 @@ function LoadingComponent(props) {
 
 #### `props.timedOut`
 
-一个布尔道具传递给[`LoadingComponent`](#loadingcomponent)一套之后[`timeout`](#optstimeout). 
+一个布尔props,传递给[`LoadingComponent`](#loadingcomponent)一套之后[`timeout`](#optstimeout). 
 
 ```js
 function LoadingComponent(props) {
@@ -851,7 +857,7 @@ function LoadingComponent(props) {
 
 #### `props.pastDelay`
 
-一个布尔道具传递给[`LoadingComponent`](#loadingcomponent)一套之后[`delay`](#optsdelay). 
+一个布尔props,传递给[`LoadingComponent`](#loadingcomponent)一套之后[`delay`](#optsdelay). 
 
 ```js
 function LoadingComponent(props) {
@@ -877,7 +883,7 @@ Loadable.preloadAll().then(() => {
 });
 ```
 
-重要的是要注意,这需要在初始化模块时声明所有可加载组件,而不是在呈现应用程序时. 
+重要的是要注意,这需要在初始化模块时声明所有可加载组件,而不是在渲染应用程序时. 
 
 **好: **
 
@@ -923,9 +929,9 @@ Loadable.preloadReady().then(() => {
 
 ### `Loadable.Capture`
 
-用于报告呈现哪些模块的组件. 
+用于报告渲染哪些模块的组件. 
 
-接受一个`report`每个人都需要的道具`moduleName`通过React Loadable呈现的. 
+接受一个`report`每个人都需要的props,`moduleName`通过React Loadable渲染的. 
 
 ```js
 let modules = [];
