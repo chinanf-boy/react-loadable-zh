@@ -312,7 +312,7 @@ Loadable({
 
 ### 加载多个资源
 
-从技术上讲,你可以使用`loader()`做任何你想做的事,只要它返回一个承诺和[你能够渲染一些东西](#customizing-rendering). 但写出来可能有点烦人. 
+从技术上讲,你可以使用`loader()`做任何你想做的事,只要它返回一个Promise和[你能够渲染一些东西](#customizing-rendering). 但写出来可能有点烦人. 
 
 为了便于并行加载多个资源,您可以使用[`Loadable.Map`](#loadablemap). 
 
@@ -418,7 +418,7 @@ app.listen(3000, () => {
 
 第一步是:从服务器渲染正确内容,确保在您渲染它们时已经加载了所有可加载组件. 
 
-为此,您可以使用[`Loadable.preloadAll`](#loadablepreloadall)方法. 它返回一个承诺,该承诺将在所有可加载组件准备就绪后`resolve`. 
+为此,您可以使用[`Loadable.preloadAll`](#loadablepreloadall)方法. 它返回一个Promise,该Promise将在所有可加载组件准备就绪后`resolve`. 
 
 ```js
 Loadable.preloadAll().then(() => {
@@ -581,7 +581,7 @@ res.send(`
 
 我们可以使用[`Loadable.preloadReady()`](#loadablepreloadready)- 客户端上的方法,用于预加载页面上包含的可加载组件. 
 
-类似[`Loadable.preloadAll()`](#loadablepreloadall),它会返回一个承诺,在`then`上我们可以`hydrate`我们的应用程序. 
+类似[`Loadable.preloadAll()`](#loadablepreloadall),它会返回一个Promise,在`then`上我们可以`hydrate`我们的应用程序. 
 
 ```js
 // src/entry.js
@@ -610,7 +610,7 @@ Loadable.preloadReady().then(() => {
 
 ### `Loadable`
 
-动态的高阶组件[装载](#optsloader)以前的模块[翻译](#optsrender)它,a[装载](#opts.loading)模块不可用时渲染组件. 
+[渲染](#optsrender)模块之前动态[加载](#optsloader)模块的高阶组件,一个[loading](#opts.loading)组件在模块不可用时会被渲染. 
 
 ```js
 const LoadableComponent = Loadable({
@@ -627,7 +627,7 @@ const LoadableComponent = Loadable({
 
 允许您并行加载多个资源的高阶组件. 
 
-Loadable.Map的[`opts.loader`](#optsloader)接受一个功能对象,需要一个[`opts.render`](#optsrender)方法. 
+Loadable.Map的[`opts.loader`](#optsloader)接受一个函数组成的对象,和需要一个[`opts.render`](#optsrender)方法. 
 
 ```js
 Loadable.Map({
@@ -643,7 +643,7 @@ Loadable.Map({
 });
 ```
 
-使用时`Loadable.Map`该`render()`方法`loaded`param将是一个与你的形状相同的对象`loader`. 
+使用`Loadable.Map`的`render()`方法`,它的`loaded`参数与你的`loader`对象形状相同.
 
 ### `Loadable`和`Loadable.Map`选项
 
@@ -657,7 +657,7 @@ Loadable({
 });
 ```
 
-使用时[`Loadable.Map`](#loadablemap)这接受了这些类型的函数的对象. 
+使用[`Loadable.Map`](#loadablemap)时,这接受了这种类型函数组成的对象. 
 
 ```js
 Loadable.Map({
@@ -668,11 +668,11 @@ Loadable.Map({
 });
 ```
 
-使用时`Loadable.Map`你还需要通过一个[`opts.render`](#optsrender)功能. 
+使用`Loadable.Map`时,你还需要给予一个[`opts.render`](#optsrender)函数. 
 
 #### `opts.loading`
 
-一个[`LoadingComponent`](#loadingcomponent)在模块加载或错误时渲染. 
+一个[`LoadingComponent`](#loadingcomponent)会在模块加载或错误时 渲染. 
 
 ```js
 Loadable({
@@ -690,7 +690,7 @@ Loadable({
 
 #### `opts.delay`
 
-在通过之前等待的时间 (以毫秒为单位) [`props.pastDelay`](#propspastdelay)到你的[`loading`](#optsloading)零件. 默认为`200`. 
+在传递[`props.pastDelay`](#propspastdelay)到你的[`loading`](#optsloading)组件(上面的),用来运行之前等待的时间 (以毫秒为单位). 默认为`200`. 
 
 ```js
 Loadable({
@@ -702,7 +702,7 @@ Loadable({
 
 #### `opts.timeout`
 
-在通过之前等待的时间 (以毫秒为单位) [`props.timedOut`](#propstimedout)到你的[`loading`](#optsloading)零件. 默认情况下这是关闭的. 
+在传递[`props.timedOut`](#propstimedout)到你的[`loading`](#optsloading)组件,用来启动之前等待的时间 (以毫秒为单位) . 默认情况下超时是关闭的. 
 
 ```js
 Loadable({
@@ -714,9 +714,9 @@ Loadable({
 
 #### `opts.render`
 
-用于自定义已加载模块的渲染的函数. 
+用于自定义*loading*模块的渲染函数. 
 
-收到`loaded`这是解决的价值[`opts.loader`](#optsloader)和`props`哪些props,传递给了[`LoadableComponent`](#loadablecomponent). 
+参数`loaded`是来自[`opts.loader`](#optsloader)和`props`,是传递给了[`LoadableComponent`](#loadablecomponent). 
 
 ```js
 Loadable({
@@ -729,7 +729,7 @@ Loadable({
 
 #### `opts.webpack`
 
-一个可选函数,它返回一个Webpack模块ID数组,您可以使用它`require.resolveWeak`. 
+一个可选函数,它返回一个Webpack模块ID的数组,通过使用`require.resolveWeak`. 
 
 ```js
 Loadable({
@@ -738,7 +738,7 @@ Loadable({
 });
 ```
 
-这个选项可以自动化[Babel插件](#babel-plugin). 
+使用[Babel插件](#babel-plugin),这个选项能自动化了. 
 
 #### `opts.modules`
 
@@ -751,11 +751,11 @@ Loadable({
 });
 ```
 
-这个选项可以自动化[Babel插件](#babel-plugin). 
+使用[Babel插件](#babel-plugin),这个选项能自动化了. 
 
 ### `LoadableComponent`
 
-这是返回的组件`Loadable`和`Loadable.Map`. 
+这是`Loadable`和`Loadable.Map`返回的组件. 
 
 ```js
 const LoadableComponent = Loadable({
@@ -763,11 +763,11 @@ const LoadableComponent = Loadable({
 });
 ```
 
-传递给此组件的props,将直接传递到动态加载的组件[`opts.render`](#optsrender). 
+传递给此`LoadableComponent`组件的`props`,将直接传递到动态加载的渲染函数[`opts.render`](#optsrender). 
 
 #### `LoadableComponent.preload()`
 
-这是一个静态的方法[`LoadableComponent`](#loadablecomponent)可用于提前加载组件. 
+这是一个[`LoadableComponent`](#loadablecomponent)的静态方法,可用于提前加载组件. 
 
 ```js
 const LoadableComponent = Loadable({...});
@@ -775,13 +775,13 @@ const LoadableComponent = Loadable({...});
 LoadableComponent.preload();
 ```
 
-这会返回一个承诺,但您应该避免等待该承诺解析以更新您的UI. 在大多数情况下,它会产生糟糕的用户体验. 
+这会返回一个Promise,但您应该避免等待该Promise`then`,以更新您的UI. 在大多数情况下,它会产生糟糕的用户体验. 
 
 [阅读有关预加载的更多信息](#preloading). 
 
 ### `LoadingComponent`
 
-这是您传递给的组件[`opts.loading`](#optsloading). 
+这是您传递给[`opts.loading`](#optsloading)的函数. 
 
 ```js
 function LoadingComponent(props) {
@@ -809,7 +809,7 @@ Loading({
 
 #### `props.error`
 
-一个`Error`对象传递给[`LoadingComponent`](#loadingcomponent)当. . . 的时候[`loader`](#optsloader)失败了. 没有错误时`null`通过. 
+一个`Error`对象传递给[`LoadingComponent`](#loadingcomponent)当[`loader`](#optsloader)失败了的时候. 没有错误时`null`通过. 
 
 ```js
 function LoadingComponent(props) {
@@ -825,7 +825,7 @@ function LoadingComponent(props) {
 
 #### `props.retry`
 
-函数props,传递给[`LoadingComponent`](#loadingcomponent)当. . . 的时候[`loader`](#optsloader)失败,用于重试加载组件. 
+[`LoadingComponent`](#loadingcomponent)函数参数`props`的`retry`字段,当[`loader`](#optsloader)失败的时候,用于重试加载组件. 
 
 ```js
 function LoadingComponent(props) {
@@ -841,7 +841,7 @@ function LoadingComponent(props) {
 
 #### `props.timedOut`
 
-一个布尔props,传递给[`LoadingComponent`](#loadingcomponent)一套之后[`timeout`](#optstimeout). 
+props 的一个布尔值,在超时[`timeout`](#optstimeout)之后,传递给[`LoadingComponent`](#loadingcomponent)函数. 
 
 ```js
 function LoadingComponent(props) {
@@ -857,7 +857,7 @@ function LoadingComponent(props) {
 
 #### `props.pastDelay`
 
-一个布尔props,传递给[`LoadingComponent`](#loadingcomponent)一套之后[`delay`](#optsdelay). 
+props 的一个布尔值, 在延迟[`delay`](#optsdelay)之后,传递给[`LoadingComponent`](#loadingcomponent)函数. 
 
 ```js
 function LoadingComponent(props) {
@@ -873,7 +873,7 @@ function LoadingComponent(props) {
 
 ### `Loadable.preloadAll()`
 
-这将打电话给所有人[`LoadableComponent.preload`](#loadablecomponentpreload)递归方法,直到它们都被解决. 允许您在服务器等环境中预加载所有动态模块. 
+这将递归运行所有的[`LoadableComponent.preload`](#loadablecomponentpreload)方法,直到它们都被解决. 允许您 在服务器等 环境中预加载所有动态模块. 
 
 ```js
 Loadable.preloadAll().then(() => {
@@ -883,12 +883,12 @@ Loadable.preloadAll().then(() => {
 });
 ```
 
-重要的是要注意,这需要在初始化模块时声明所有可加载组件,而不是在渲染应用程序时. 
+需要着重注意的是, 应该 在初始化模块时 就声明所有可加载组件,而不是在渲染应用程序时. 
 
-**好: **
+**好:**
 
 ```js
-// During module initialization...
+// 模块初始化期间...
 const LoadableComponent = Loadable({...});
 
 class MyComponent extends React.Component {
@@ -905,19 +905,19 @@ class MyComponent extends React.Component {
 
 class MyComponent extends React.Component {
   componentDidMount() {
-    // During app render...
+    // 应用渲染期间...
     const LoadableComponent = Loadable({...});
   }
 }
 ```
 
-> **注意: ** `Loadable.preloadAll()`如果您有多个副本,则无效`react-loadable`在你的应用程序中
+> **注意:** 在你的应用程序使用`react-loadable`的情况下,如果您有多个`Loadable.preloadAll()`副本,这函数将不会工作
 
 [阅读有关服务器上预加载的更多信息](#preloading-all-your-loadable-components-on-the-server). 
 
 ### `Loadable.preloadReady()`
 
-检查已在浏览器中加载的模块并调用匹配项[`LoadableComponent.preload`](#loadablecomponentpreload)方法. 
+检查已在浏览器中加载的模块 和 调用对应的[`LoadableComponent.preload`](#loadablecomponentpreload)方法. 
 
 ```js
 Loadable.preloadReady().then(() => {
@@ -931,7 +931,7 @@ Loadable.preloadReady().then(() => {
 
 用于报告渲染哪些模块的组件. 
 
-接受一个`report`每个人都需要的props,`moduleName`通过React Loadable渲染的. 
+它接受 props 的一个`report`函数,其中渲染的`moduleName`由 React Loadable 提供的. 
 
 ```js
 let modules = [];
@@ -949,9 +949,9 @@ console.log(modules);
 
 ## Babel插件
 
-提供[`opts.webpack`](#optswebpack)和[`opts.modules`](#optsmodules)对于每个可加载的组件,需要记住许多手动工作. 
+算然提供[`opts.webpack`](#optswebpack)和[`opts.modules`](#optsmodules),来配置对于每个可加载的组件,但这需要记住许多手动工作. 
 
-相反,您可以将Babel插件添加到您的配置中,它将为您自动执行: 
+而Babel插件不同,您可以将Babel插件添加到您的配置中,它将为您自动执行: 
 
 ```json
 {
@@ -976,7 +976,7 @@ const LoadableComponents = Loadable.Map({
 });
 ```
 
-**产量**
+**输出**
 
 ```js
 import Loadable from 'react-loadable';
@@ -998,11 +998,11 @@ const LoadableComponents = Loadable.Map({
 });
 ```
 
-[阅读有关声明模块的更多信息](#declaring-which-modules-are-being-loaded). 
+[阅读有关声明加载模块的更多信息](#declaring-which-modules-are-being-loaded). 
 
 ## Webpack插件
 
-为了[发送正确的捆绑包](#mapping-loaded-modules-to-bundles)在渲染服务器端时,您需要React Loadable Webpack插件来为您提供模块到bundle的映射. 
+为了在渲染服务器端时[发送正确的捆绑包](#mapping-loaded-modules-to-bundles),您需要React Loadable 的 Webpack插件来为您提供 模块到捆绑包 的映射. 
 
 ```js
 // webpack.config.js
@@ -1017,13 +1017,13 @@ export default {
 };
 ```
 
-这将创建一个文件 (`opts.filename`) 您可以导入以将模块映射到捆绑包. 
+这将创建一个文件 (`opts.filename`) ,您可以将模块映射到捆绑包. 
 
-[阅读有关将模块映射到bundle的更多信息](#mapping-loaded-modules-to-bundles). 
+[阅读有关将 模块 映射到捆绑包 的更多信息](#mapping-loaded-modules-to-bundles). 
 
 ### `getBundles`
 
-导出的方法`react-loadable/webpack`用于将模块转换为捆绑包. 
+`react-loadable/webpack`导出的方法,用于将模块转换为捆绑包. 
 
 ```js
 import { getBundles } from 'react-loadable/webpack';
@@ -1031,7 +1031,7 @@ import { getBundles } from 'react-loadable/webpack';
 let bundles = getBundles(stats, modules);
 ```
 
-[阅读有关将模块映射到bundle的更多信息](#mapping-loaded-modules-to-bundles). 
+[阅读有关将 模块 映射到捆绑包 的更多信息](#mapping-loaded-modules-to-bundles). 
 
 <h2>
   <hr>
@@ -1044,7 +1044,7 @@ let bundles = getBundles(stats, modules);
 
 ### 我该如何避免重复?
 
-指定相同`loading`组件或`delay`每次使用`Loadable()`快速重复. 相反,你可以包装`Loadable`使用您自己的高阶组件 (HOC) 来设置默认选项. 
+指定相同`loading`组件或`Loadable()`设定相同的`delay`快速重复. 那么其实,你可以包装`Loadable`使用您自己的高阶组件 (HOC) 来设置默认选项. 
 
 ```js
 import Loadable from 'react-loadable';
@@ -1059,7 +1059,7 @@ export default function MyLoadable(opts) {
 };
 ```
 
-然后你可以指定一个`loader`当你去使用它. 
+然后当你去使用它，你可以指定一个`loader`. 
 
 ```js
 import MyLoadable from './MyLoadable';
@@ -1075,7 +1075,7 @@ export default class App extends React.Component {
 }
 ```
 
-不幸的是,目前使用包裹的可装载休息时间[react-loadable/巴别](#babel-plugin)所以在这种情况下你必须添加所需的属性 (`modules`,`webpack`) 手动. 
+不幸的是,目前使用(上述的)可加载的高级组件, 会破坏[react-loadable/babel](#babel-plugin)工作, 所以在这种情况下,你必须手动添加所需的属性 (`modules`,`webpack`) . 
 
 ```js
 import MyLoadable from './MyLoadable';
@@ -1093,11 +1093,11 @@ export default class App extends React.Component {
 }
 ```
 
-### 我该如何处理其他款式`.css`或源图`.map`服务器端渲染?
+### 我该如何处理其他`.css`文件或服务器端渲染中的`.map`文件?
 
-你打电话时[`getBundles`](#getbundles),它可能会返回除JavaScript以外的文件类型,具体取决于您的Webpack配置. 
+当你使用[`getBundles`](#getbundles),它可能会返回 除JavaScript以外 的文件类型,具体取决于您的Webpack配置. 
 
-要处理此问题,您应手动过滤到您关心的文件扩展名: 
+要处理此问题,您应手动过滤,您关心的文件扩展名: 
 
 ```js
 let bundles = getBundles(stats, modules);
